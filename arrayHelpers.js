@@ -31,14 +31,18 @@ numbers.forEach(function(number) {
 });
 
 // log the sum variable
-console.log(sum); 
+console.log(sum); //15
 
-// another way is to define the iterator function separately and pass it in to the forEach helper method
+
+
+// Another way is to define the iterator function separately and pass it in to the forEach helper method
+var sum2 = 0;
+
 function adder(number) {
-	sum += number;
+	sum2 += number;
 }
 
 // we don't add parentheses to adder like this 'adder()' because we don't want to immediately call it, we only want to call on it once every iteration
 numbers.forEach(adder);
 
-console.log(sum); //15
+console.log(sum2); //15
