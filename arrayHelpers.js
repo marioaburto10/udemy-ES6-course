@@ -1,4 +1,4 @@
-// forEach() helper method
+// forEach() helper method -------------------------------------------------------------------------------------------------------------------------------------------------
 
 	var colors = ['red', 'blue', 'green'];
 
@@ -20,7 +20,7 @@
 
 
 
-	// Ex. 1 add numbers in an array ----------------------------------------------------------
+	// Ex. 1 add numbers in an array 
 	// create an array of numbers
 	var numbers = [1, 2, 3, 4, 5];
 
@@ -52,7 +52,7 @@
 
 
 
-	// Ex. 2 - refactor the  code below to use an forEach helper instead ---------------------
+	// Ex. 2 - refactor the  code below to use an forEach helper instead 
 	// note: this is just an example so savePost() is not defined
 	function handlePosts() {
 	    var posts = [
@@ -80,7 +80,7 @@
 	}
 
 
-	// Ex. 3 - Processing Values ----------------------------------------------------------------
+	// Ex. 3 - Processing Values 
 	// The array below contains an array of objects, each of which is a representation of an image.  Using the forEach helper, calculate the area of each image and store it in a new array called 'areas'.  The area of an image can be calculated as 'image.height * image.width'.
 	var images = [
 	  { height: 10, width: 30 },
@@ -98,7 +98,7 @@
 
 
 
-// map() helper method - used to modify records in an array of data
+// map() helper method - used to modify records in an array of data -------------------------------------------------------------------------------------------------------------
 
 	var numbers = [1, 2, 3];
 	var doubledNumbers = [];
@@ -121,7 +121,7 @@
 	 console.log(doubled); // [2, 4, 6]
 
 
-	// Ex 1. -----------------------------------------------------------------------------------
+	// Ex 1. 
 	// basic example, map() is common with arrays of objects
 	var cars = [
 		{model : 'Buick', price: "cheap"},
@@ -135,7 +135,7 @@
 
 	console.log(prices); // ['cheap', 'expensive']
 
-	// Ex. 2 Plucking Values ---------------------------------------------------------------------
+	// Ex. 2 Plucking Values 
 	// Using map, create a new array that contains the 'height' property of each object.  Assign this new array to the variable 'heights'.
 	var images = [
 	  { height: '34px', width: '39px' },
@@ -150,7 +150,7 @@
 	console.log(heights); // ['34px', '54px', '83px']
 
 
-	//Ex. 3 Calculating Values with Map ----------------------------------------------------------
+	//Ex. 3 Calculating Values with Map 
 	// Using map, create a new array that contains the distance / time value from each trip
 	var trips = [
 	  { distance: 34, time: 10 },
@@ -165,7 +165,7 @@
 	console.log(speeds);
 
 
-	// Ex. 4 Challenging - Implementing 'Pluck' --------------------------------------------------
+	// Ex. 4 Challenging - Implementing 'Pluck' 
 	// Implement a 'pluck' function.  Pluck should accept an array and a string representing a property name and return an  array containing that property from each object. 
 
 	var paints = [ { color: 'red' }, { color: 'blue' }, { color: 'yellow' }];
