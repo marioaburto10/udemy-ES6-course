@@ -184,6 +184,7 @@
 
 
 // Selecting needed data with the filter() helper -----------------------------------------------------------------------------------------------------------------------------------------
+	
 	// we want to filter out all products that are fruits
 	// this is the old way of filtering out data using a for loop
 	var products = [
@@ -201,7 +202,7 @@
 		}
 	}
 
-	console.log(filreredProducts);
+	console.log(filreredProducts); // [{ name: 'banana', type: 'fruit'}, { name: 'orange', type: 'fruit'}]
 
 	// new way to filter data in an array or objects, using filter() helper method
 	// the filter() helper using an iterator function that returns a truthy or falsy value. filter() will dump all elements from the original array that are truthy into a new array 
@@ -209,7 +210,45 @@
 		return product.type === 'fruit' 
 	});
 
-	console.log(filteredProducts2);
+	console.log(filteredProducts2); // [{ name: 'banana', type: 'fruit'}, { name: 'orange', type: 'fruit'}]
+
+
+	// Ex. 1 - more complex example using filter()
+	var products2 = [
+		{ name: 'cucumber', type: 'vegetable', quantity: 0, price: 1},
+		{ name: 'banana', type: 'fruit', quantity: 10, price: 15}, 
+		{ name: 'celery', type: 'vegetable', quantity: 30, price: 9},
+		{ name: 'orange', type: 'fruit', quantity: 3, price: 5}
+	];
+
+	// we want to filter products with type 'vegetable', quantity greater than 0, and price less than 10
+	var filteredProducts3 = products2.filter(function(product) {
+		return product.type === 'vegetable' 
+		&& product.quantity > 0
+		&& product.price < 10 ;
+	});
+
+	console.log(filteredProducts3); // [ { name: 'celery', type: 'vegetable', quantity: 30, price: 9 } ]
+
+
+	// Ex. 2 - Choosing when to filter
+	// more practical example using blog posts
+	var post = { id: 4, title: "Latest Post"};
+
+	var comments = [
+		{ postId: 4, content: 'awesome post'},
+		{ postId: 3, content: 'cool story'},
+		{ postId: 4, content: 'it was ok'},
+		{ postId: 1, content: 'nice'}
+	];
+
+	function commentsForPost(post, comments) {
+		return comments.filter(function(comment) {
+			return comment.postId === post.id;
+		})
+	}
+
+	commentsForPost(post, comments); // [ { postId: 4, content: 'awesome post' }, { postId: 4, content: 'it was ok' } ]
 
 
 
