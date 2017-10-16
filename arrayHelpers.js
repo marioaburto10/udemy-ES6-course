@@ -275,6 +275,24 @@
 
 	var filteredUsers = users.filter(function(user) {
 	   return user.admin === true; 
-	});
+	}); 
 
-	console.log(filteredUsers);
+	console.log(filteredUsers); // [ { id: 1, admin: true }, { id: 5, admin: true } ]
+
+
+	// CHALLENGE - Implementing 'reject'.
+	// Create a function called 'reject'.  Reject should work in the opposite way of 'filter' - if a function returns 'true', the item should *not* be included in the new array. 
+	var numbers = [10, 20, 30]; 
+
+	function reject(array, iteratorFunction) {
+    	// the iterator function returns a boolean so I'm simply negating it and passing to it the value of each number in a filter of my own.
+    	return array.filter(function(item) {
+    		return !iteratorFunction(item);
+    	});
+	}
+
+	var lessThanFifteen = reject(numbers, function(number){
+	  	return number > 15;
+	}); 
+
+	console.log(lessThanFifteen); // [10]
