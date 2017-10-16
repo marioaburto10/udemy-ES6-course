@@ -251,4 +251,30 @@
 	commentsForPost(post, comments); // [ { postId: 4, content: 'awesome post' }, { postId: 4, content: 'it was ok' } ]
 
 
+	// Example 3 - Filtering Values
+	// Filter the array of numbers using the filter helper, creating a new array that only contains numbers greater than 50.  Assign this new array to a variable called 'filteredNumbers'. 
+	var numbers = [15, 25, 35, 45, 55, 65, 75, 85, 95];
 
+	var filteredNumbers = numbers.filter(function(number) {
+	   return number > 50; 
+	});
+
+	console.log(filteredNumbers); // [ 55, 65, 75, 85, 95 ]
+
+
+	// Ex 4 - Handling Permissions with Filter
+	// Filter the array of users, only returning users who have admin level access.  Assign the result to the variable 'filteredUsers'.
+
+	var users = [
+	 { id: 1, admin: true },  
+	 { id: 2, admin: false },
+	 { id: 3, admin: false },
+	 { id: 4, admin: false },
+	 { id: 5, admin: true },
+	];
+
+	var filteredUsers = users.filter(function(user) {
+	   return user.admin === true; 
+	});
+
+	console.log(filteredUsers);
