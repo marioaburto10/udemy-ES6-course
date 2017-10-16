@@ -181,3 +181,35 @@
 	}
 
 	pluck(paints, 'color'); // ['red', 'blue', 'yellow']
+
+
+// Selecting needed data with the filter() helper -----------------------------------------------------------------------------------------------------------------------------------------
+	// we want to filter out all products that are fruits
+	// this is the old way of filtering out data using a for loop
+	var products = [
+		{ name: 'cucumber', type: 'vegetable'},
+		{ name: 'banana', type: 'fruit'},
+		{ name: 'celery', type: 'vegetable'},
+		{ name: 'orange', type: 'fruit'}
+	];
+
+	var filreredProducts = [];
+
+	for ( var i = 0 ; i < products.length; i++) {
+		if (products[i].type === 'fruit') {
+			filreredProducts.push(products[i]);
+		}
+	}
+
+	console.log(filreredProducts);
+
+	// new way to filter data in an array or objects, using filter() helper method
+	// the filter() helper using an iterator function that returns a truthy or falsy value. filter() will dump all elements from the original array that are truthy into a new array 
+	var filteredProducts2 = products.filter(function(product) {
+		return product.type === 'fruit' 
+	});
+
+	console.log(filteredProducts2);
+
+
+
