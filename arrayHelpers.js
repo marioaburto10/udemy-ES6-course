@@ -289,10 +289,57 @@
     	return array.filter(function(item) {
     		return !iteratorFunction(item);
     	});
-	}
+	}  
 
 	var lessThanFifteen = reject(numbers, function(number){
 	  	return number > 15;
 	}); 
 
 	console.log(lessThanFifteen); // [10]
+
+
+// Querying for Records using filter() helper -----------------------------------------------------------------------------------------------------------------------------------------
+	var users2 = [
+		{ name: 'Jill'},
+		{ name: 'Alex'},
+		{ name: 'Bill'},
+	];
+
+	var user;
+
+	// old way, looking for a particular user in an array of objects
+	for (var i = 0; i < users2.length; i++) {
+		if (users2[i].name === "Alex") {
+			user = users2[i];
+			break; // using break to stop the loop from doing unneccesary iterations 
+		}
+	}
+
+	console.log(user); // { name: 'Alex' }
+
+	// new way, using find() helper method
+	// an iterator function gets passed in that will get called once for each iteration
+	// it will return a truthy or falsy value
+	// * only slight drawback is that it will break as soon as a truthy value is returned, so if there are multiple "Alex" names, only the first one will be returned
+	var user2 = users2.find(function(user) {
+		return user.name === "Alex";
+	});
+
+	console.log(user2); // { name: 'Alex' }
+
+	// Ex. 1 - find() continued
+	var posts2 = [
+		{ id: 1, title: "New Post"},
+		{ id: 2, title: "Old Post"}
+	];
+
+	var comment = { postId: 1, content: "Great Post"};
+
+	// Create a function that will take in a posts array and a comment, to find what post belongs to that comment
+	function postForComment(posts, comment) {
+		return posts.find(function(post) {
+			return post.id === comment.postId;
+		});
+	}
+	
+	console.log(postForComment(posts2, comment));
