@@ -342,4 +342,96 @@
 		});
 	}
 	
-	console.log(postForComment(posts2, comment));
+	console.log(postForComment(posts2, comment)); // { id: 1, title: 'New Post' }
+
+
+	// Ex. 2 - Using find() to search for Admin users 
+	// Find the user in the users's array who is an admin.  Assign this user to the variable 'admin'.
+	var users3 = [
+	  { id: 1, admin: false },
+	  { id: 2, admin: false },
+	  { id: 3, admin: true }
+	];
+
+	var admin = users3.find(function(user) {
+	   return user.admin === true; 
+	});
+
+	console.log(admin); // { id: 3, admin: true }
+
+
+	//Ex. 3 - Find the account with a balance of 12 and assign it to the variable 'account'.
+	var accounts = [
+	  { balance: -10 },
+	  { balance: 12 },
+	  { balance: 0 }
+	];
+
+	var account = accounts.find(function(account) {
+	   return account.balance === 12; 
+	});
+
+	console.log(account); // { balance: 12 }
+
+	// Ex. 3 - Challenge: Custom findWhere Helper
+	// This is a tough one!  The most common find operation is to an object that has a given property.  Rather than writing out a full function every time, it would be great if we has a shorthand syntax to find an object like this:
+	// findWhere(ladders, { height: '20 feet' });
+	// The object { ladders: '20 feet' } should be used as the search criteria - we would want to find a ladder whose 'height' property was '20 feet';
+	// Write a 'findWhere' function that achieves this shorthand approach.  'findWhere' should return the found object.
+	var ladders = [
+	  { id: 1, height: 20 },
+	  { id: 3, height: 25 }
+	];
+
+	function findWhere(array, criteria) {
+	  // creating a property variable to hold the "height" property in the criteria object
+	  var property = Object.keys(criteria)[0];
+
+	  return array.find(function(item) {
+	  			// checking to see if both objects have the same method, given the same property
+	    return item[property] === criteria[property];
+	  });
+	}
+
+	console.log(findWhere(ladders, {height: 20})); // { id: 1, height: 20 }
+
+// Using every() and some() helpers to condense an array of data into a single value ------------------------------------------------------------------------------------------------------
+	var computers = [
+		{ name: 'Apple', ram: 24 },
+		{ name: 'Compaq', ram: 4 },
+		{ name: 'Acer', ram: 32 }
+	];
+
+	// old way of iterating through array to get a true or false value
+	// looking to see if we have computers that can run a progam that requires 16GB of RAM
+	var allComputersCanRunProgram = true;
+	var onlySomeComputersCanRunProgram = false;
+
+	for (var i = 0; i < computers.length; i++) {
+		var computer = computers[i];
+
+		// checking to see if any computer in the array has less than 16GB of ram, it it does or doesn't then change the allComputersCanRunProgram and onlySomeComputersCanRunProgram variables accordingly
+		if (computer.ram < 16) {
+			allComputersCanRunProgram = false;
+		} else {
+			onlySomeComputersCanRunProgram = true;
+		}
+	}
+
+	console.log(allComputersCanRunProgram , onlySomeComputersCanRunProgram); // false , true
+
+	// using every() helper
+	// an iterator function is passed in that will iterate through each element in the array, check for a condition, and return a boolean
+	// if all of the returned booleans are not true, then false will be returned.
+	// if all returned boolens are true, then true will be returned
+	computers.every(function(computer) {
+		return computer.ram > 16;
+	}); // this returns false
+
+	// using some() helper
+	// looking to see if ANY records in the array satisfy the criteria
+	computers.some(function(computer) {
+		return computer.ram > 16
+	}); // this returns true
+
+	// THE BIGGEST DIFFERENCE BETWEEN every() and some() is that every() is using && when checking between iterations while some() uses ||
