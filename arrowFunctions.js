@@ -52,4 +52,42 @@ var doubledArray2 = numbers.map(number => 2 * number);
 console.log(doubledArray2); // [ 2, 4, 6 ]
 
 
+// Ex. 2 - Using fat arrow functions to hold the value of "this"
+const team = {
+	members: ['Jane', 'Bill'],
+	teamName: 'Super Squad',
+	teamSummary: function() {
+		// In the map function, if we don't use a fat arrow function this.teamName would give an error because "this" becomes lost since it's a function within a function
+		// Arrow functions bind the value of 'this' to the surrounding context
+		return this.members.map(member => `${member} is on team ${this.teamName}`);
+	}
+};
 
+console.log(team.teamSummary()); // [ 'Jane is on team Super Squad', 'Bill is on team Super Squad' ]
+
+
+// Ex. 3 - Refactoring Keyword Functions
+// The function below uses the 'function' keyword.  There's nothing wrong with using the 'function' keyword here, but it might look a bit nicer if we refactor it to use the fat arrow syntax instead.  
+const fibonacci = function(n) {
+  if (n < 3) return 1;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+// Refactored
+const fibonacci2 = n => {
+	if (n < 3) return 1;
+	return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci2(7)); // 13
+
+
+// Ex. 4 - Arrow Functions Aren't Always a Solution
+// Arrow functions bind the value of 'this' to the surrounding context, and sometimes this isn't the behavior we expect.  The code below has an object that represents a users profile.  The profile has a 'name' currently.  Add another key to this object called 'getName'.  'getName' should be a function that returns the profiles name, using 'this.name'.  Does the solution work with a fat arrow function or will you have to use a function keyword instead?
+const profile = {
+    name: 'Alex',
+    getName: function() {
+        return this.name; // returns Alex
+        // However, if we used an arrow function, it would give an error of cannot get name of undefined
+        // We cannot use an arrow function here
+    }
+};
