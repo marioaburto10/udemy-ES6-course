@@ -67,7 +67,7 @@ let canvasDimensions = function(width, initialHeight) {
 
 // refactored
 canvasDimensions = function(width, initialHeight) {
-  const height = initialHeight * 9 /16;
+  const height = initialHeight * 9/16;
   return { 
     width, 
     height 
