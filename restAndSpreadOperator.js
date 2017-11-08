@@ -64,3 +64,58 @@ function validateShoppingList(...items) {
 // even though we forgot to add milk to our list of groceries, it still gets added to the returned array
 console.log(validateShoppingList('orange', 'bread', 'eggs')); // [ 'milk', 'orange', 'bread', 'eggs' ]
 
+
+
+// Ex. 2 - Many, Many Arguments
+// Refactor the following function to use the rest operator
+function product(a, b, c, d, e) {
+  var numbers = [a,b,c,d,e];
+  
+  return numbers.reduce(function(acc, number) {
+    return acc * number;
+  }, 1)
+}
+
+// Refactored
+function product2(...numbers) {
+
+  return numbers.reduce(function(acc, number) {
+    return acc * number;
+  }, 1)
+}
+
+console.log(product2(1,2,3,4,5,6,7)); // 5040
+
+
+// Ex. 3 - Spreadin' Arrays
+// Refactor the following to use the spread operator.
+function join(array1, array2) {
+  return array1.concat(array2);
+}
+
+// Refactored
+function join2(array1, array2) {
+  return [...array1, ...array2];
+} 
+
+console.log(join2(['tim', 'jim'], ['john', 'bob']));  // [ 'tim', 'jim', 'john', 'bob' ]
+
+
+// Ex. 4 - Mixing Rest and Spread
+function unshift(array, a, b, c, d, e) {
+  return [a, b, c, d, e].concat(array);
+}
+
+// Refactored
+function unshift2(array, ...args) {
+  return [ ...args, ...array];
+}
+
+
+
+
+
+
+
+
+
