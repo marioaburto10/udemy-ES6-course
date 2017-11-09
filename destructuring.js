@@ -42,3 +42,20 @@ function fileSummary2({extension, name, size}) {
 }
 
 console.log(fileSummary2(savedFile)); // repost.jpg is a size of 14040
+
+
+// Destructuring Arrays
+// similar to destructuring arrays
+const companies = [
+	'Google',
+	'Facebook',
+	'Uber'
+];
+// looks cleaner
+// to destructure a property we use curly braces, to destructure an element we use square brackets
+const [ name, name2, name3 ] = companies;
+const { length } = companies; 
+console.log(name, name2, name3, length); // Google Facebook Uber 3
+// we can also use the rest operator like so
+const [ name1, ...rest ] = companies;
+console.log(name1, rest); // Google [ 'Facebook', 'Uber' ]
