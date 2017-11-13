@@ -36,3 +36,22 @@ console.log(camry.drive()); // vroom
 console.log(camry.honk()); // beep
 
 
+
+// ----------------- REFACTORED WITH ES6 CLASSES --------------
+class Car2 {
+	// this function handles initial setup for this class
+	// runs whenever we use the the 'new' keyword infront of this class like so const ford = new Car2();
+	// here we are using the syntax of enhanced object literals and also using object destructuring
+	constructor({ title }) {
+		this.title = title;
+	}
+
+	// we no longer have to use the prototype keyword to add additional methods
+	drive() {
+		return 'vroom vroom';
+	}
+}
+
+const ford = new Car2({ title: 'Focus'});
+console.log(ford); // Car2 { title: 'Focus' }
+console.log(ford.drive()); // vroom vroom
