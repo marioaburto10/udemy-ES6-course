@@ -55,3 +55,28 @@ class Car2 {
 const ford = new Car2({ title: 'Focus'});
 console.log(ford); // Car2 { title: 'Focus' }
 console.log(ford.drive()); // vroom vroom
+
+
+// 'extends Car2' allows Toyota2 to inherit all the methods from the Car2 class
+class Toyota2 extends Car2 {
+	// this constructor function is called whenever a new instance of Toyota is created
+	constructor(options) {
+		// super() allows Toyota2 to use the constructor() method of Car 2
+		// super() is acting like Car2.constructor();
+		// Whatever we pass into the constructor function up above, we have to pass into super as well
+		super(options);
+		
+		this.color = options.color;
+	}
+
+	honk() {
+		// if Car2 also had a honk() method, we could write super() in here to use Car2's honk() method
+		return 'beep';
+	}
+}
+
+const corolla = new Toyota2({ color: 'red', title: 'Daily Driver'});
+console.log(corolla); // Toyota2 { title: 'Daily Driver', color: 'red' }
+console.log(corolla.honk()); // beep
+// here we see that we can use Car2's drive method 
+console.log(corolla.drive()); // vroom vroom
