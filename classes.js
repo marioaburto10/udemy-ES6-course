@@ -65,7 +65,7 @@ class Toyota2 extends Car2 {
 		// super() is acting like Car2.constructor();
 		// Whatever we pass into the constructor function up above, we have to pass into super as well
 		super(options);
-		
+
 		this.color = options.color;
 	}
 
@@ -80,3 +80,36 @@ console.log(corolla); // Toyota2 { title: 'Daily Driver', color: 'red' }
 console.log(corolla.honk()); // beep
 // here we see that we can use Car2's drive method 
 console.log(corolla.drive()); // vroom vroom
+
+
+
+// Ex. 1 - Game Classes
+// You are a game developer tasked with setting up some basic classes for a new game you are working on.  Create a class called 'Monster'.  In the constructor, you'll need to do some basic setup for Monster whenever they are created. 
+// Initialize the Monster's health to 100.
+// The constructor will be called with an 'options' object that has a 'name' property.  Assign the 'name' to the Monster
+	class Monster {
+  		constructor(options){
+  			this.health = 100;
+  			this.name = options.name;
+  		}
+	}
+
+	// Now that you have a monster created, create a subclass of the Monster called Snake.  
+	// The Snake should have a 'bite' method.  The only argument to this method is another instance of a Snake.
+	// The instance of Snake that is passed in should have their health deducated by 10
+	class Snake extends Monster {
+		constructor(options) {
+			super(options);
+		}
+
+		bite(Snake2) {
+			Snake2.health -= 10;
+			console.log(`${Snake2.name}'s health has dropped by 10 and is now ${Snake2.health}`);
+		}
+
+	}
+
+	const python = new Snake({ name: 'Master P'});
+	const cobra = new Snake({ name: 'King of the Streets'});
+
+	cobra.bite(python); // Master P's health has dropped by 10 and is now 90
