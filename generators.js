@@ -10,3 +10,33 @@ function* numbers() {
 // When removing the yield keyword from the function, 'done' has a value of true both times instead of starting as false and then flipping over to true like we see below
  console.log(gen.next()); // { value: undefined, done: false }
  console.log(gen.next()); // { value: undefined, done: true }
+
+
+ // Ex. 1 - Buying groceries with money at the grocery store
+ // We start on the sidewalk, crossover to the grocery store, and cross back to the sidewalk
+ 	function* shopping() {
+ 		// stuff on sidewalk
+
+ 		// walking down the sidewalk with cash in our pocket
+
+ 		// go into the store with cash
+ 		const stuffFromStore = yield 'cash';
+
+ 		// walking back home
+ 		return stuffFromStore;
+ 	}
+
+ 	// stuff in the store
+ 	// caling on shopping() does nothing whatsoever
+ 	const gen2 = shopping();
+ 	
+ 	// leaving our house
+
+ 	console.log(gen2.next()); // { value: 'cash', done: false }
+
+ 	// walked into the store
+ 	// walking up and down the aisles..
+ 	// purchase our stuff
+
+ 	// // leaving store with groceries
+ 	console.log(gen2.next('groceries')); // { value: 'groceries', done: true }
