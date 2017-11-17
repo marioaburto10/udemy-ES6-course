@@ -120,3 +120,46 @@ function* numbers() {
 
 	console.log(names); // [ 'Jill', 'Alex', 'Dave', 'Amanda', 'Bill' ]
 
+
+
+// Ex. 3 - Generators with recursion & tree data structures
+	// based on reddit - a comment can have children comments and those children can have children comments and so on
+	class Comment {
+		constructor(content, children) {
+			this.content = content;
+			this.children = children;
+		}
+
+		// this is a class so syntax using generators will differ from objects
+		// * means that it will be a generator function
+		// using enhanced literal syntax and ES6 key interpolation [Symbol.iterator] as a key
+		// this is used to make the iteration possible using for of loops
+		*[Symbol.iterator]() {
+			yield this.content;
+			// for every node (child) of this.children, go into that child and see if it is iterable, if it is, iterate through it
+			for (let child of this.children) {
+				yield* child;
+			}
+		}
+	}
+
+	const children = [
+		new Comment('good comment', []),
+		new Comment('bad comment', []),
+		new Comment('blah', [])
+	];
+
+	// tree is the parent node with three children nodes
+	const tree = new Comment('Great post', children);
+	// console.log(tree); // Comment { content: 'Great post', children: [ Comment { content: 'good comment', children: [] }, Comment { content: 'bad comment', children: [] }, Comment { content: 'blah', children: [] } ] }
+
+	const commentValues = [];
+
+	for (let value of tree) {
+		commentValues.push(value);
+	}
+
+	console.log(commentValues); // [ 'Great post', 'good comment', 'bad comment', 'blah' ]
+
+
+
