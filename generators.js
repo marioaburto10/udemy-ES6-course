@@ -22,14 +22,18 @@ function* numbers() {
  		// go into the store with cash
  		const stuffFromStore = yield 'cash';
 
+ 		// we can call yield in a generator multiple times
+ 		// walking into laundry place
+ 		const cleanClothes = yield 'laundry';
+
  		// walking back home
- 		return stuffFromStore;
+ 		return [stuffFromStore, cleanClothes];
  	}
 
  	// stuff in the store
  	// caling on shopping() does nothing whatsoever
  	const gen2 = shopping();
- 	
+
  	// leaving our house
 
  	console.log(gen2.next()); // { value: 'cash', done: false }
@@ -38,5 +42,8 @@ function* numbers() {
  	// walking up and down the aisles..
  	// purchase our stuff
 
- 	// // leaving store with groceries
- 	console.log(gen2.next('groceries')); // { value: 'groceries', done: true }
+ 	// leaving store with groceries
+ 	console.log(gen2.next('groceries')); // { value: 'groceries', done: false }
+
+ 	// we execute code in a generator by calling .next();
+ 	console.log(gen2.next('clean clothes')); // { value: [ 'groceries', 'clean clothes' ], done: true }
