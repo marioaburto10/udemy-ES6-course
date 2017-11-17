@@ -47,3 +47,30 @@ function* numbers() {
 
  	// we execute code in a generator by calling .next();
  	console.log(gen2.next('clean clothes')); // { value: [ 'groceries', 'clean clothes' ], done: true }
+
+
+
+// Ex. 2 
+	function* colors() {
+		yield 'red';
+		yield 'blue';
+		yield 'green';
+	}
+
+	const gen3 = colors();
+
+	console.log('---------------');
+	console.log(gen3.next()); // { value: 'red', done: false }
+	console.log(gen3.next()); // { value: 'blue', done: false }
+	console.log(gen3.next()); // { value: 'green', done: false }
+	console.log(gen3.next()); // { value: undefined, done: true }
+
+	const myColors = [];
+
+	// for of loops work perfectly with generator functions, iliminates the need to do .next()
+	// we can use generators to iterate through any type of data structure that we want
+	for (let color of colors()) {
+		myColors.push(color);
+	}
+
+	console.log(myColors); // [ 'red', 'blue', 'green' ]
