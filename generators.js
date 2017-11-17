@@ -50,7 +50,7 @@ function* numbers() {
 
 
 
-// Ex. 2 
+// Ex. 2 - Iterating through generator functions
 	function* colors() {
 		yield 'red';
 		yield 'blue';
@@ -74,3 +74,30 @@ function* numbers() {
 	}
 
 	console.log(myColors); // [ 'red', 'blue', 'green' ]
+
+
+
+// Ex. 3 - A Practical Use of ES6 Generators
+	const engineeringTeam = {
+		size: 3,
+		department: 'Engineering',
+		lead: 'Jill',
+		manager: 'Alex',
+		engineer: 'Dave'
+	};
+
+	// we want to be able to iterate only through employees
+	function* TeamIterator(team) {
+		yield team.lead;
+		yield team.manager;
+		yield team.engineer;
+	}
+
+	const names = [];
+
+	// a generator function with a for of loop lets us iterate through very particular properties
+	for (let name of TeamIterator(engineeringTeam)) {
+		names.push(name);
+	}
+
+	console.log(names); // [ 'Jill', 'Alex', 'Dave' ]
