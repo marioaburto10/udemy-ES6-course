@@ -78,26 +78,45 @@ function* numbers() {
 
 
 // Ex. 3 - A Practical Use of ES6 Generators
+// Delegation of generators
+// incorporating multiple generators
+	const testingTeam = {
+		lead: 'Amanda',
+		tester: 'Bill',
+		// using this key below to tell the for of loop how to iterate over testingTeam object
+		// allows for custom iteration 
+		// brackets are not forming an array, this is called key interpolation to dinamycally generate a key(s)
+		[Symbol.iterator]: function* () {
+			yield this.lead;
+			yield this.tester;
+		}
+	}
+
 	const engineeringTeam = {
+		testingTeam,
 		size: 3,
 		department: 'Engineering',
 		lead: 'Jill',
 		manager: 'Alex',
-		engineer: 'Dave'
+		engineer: 'Dave',
+		// using this key below to tell the for of loop how to iterate over testingTeam object
+		// brackets are not forming an array, this is called key interpolation to dinamycally generate a key(s)
+		// arrays have a default Symbol.iterator
+		[Symbol.iterator]: function* () {
+			yield this.lead;
+			yield this.manager;
+			yield this.engineer;
+			// adding yield* lets for of loop know that there are other yields in another generator to allow complete iteration with multiple generator functions aka generator delegation
+			yield* this.testingTeam;
+		}
 	};
-
-	// we want to be able to iterate only through employees
-	function* TeamIterator(team) {
-		yield team.lead;
-		yield team.manager;
-		yield team.engineer;
-	}
 
 	const names = [];
 
 	// a generator function with a for of loop lets us iterate through very particular properties
-	for (let name of TeamIterator(engineeringTeam)) {
+	for (let name of engineeringTeam) {
 		names.push(name);
 	}
 
-	console.log(names); // [ 'Jill', 'Alex', 'Dave' ]
+	console.log(names); // [ 'Jill', 'Alex', 'Dave', 'Amanda', 'Bill' ]
+
