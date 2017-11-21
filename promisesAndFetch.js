@@ -30,3 +30,5 @@ promise2
 	.then(() => console.log('finally finished!')) // this will only log after 3 seconds
 	.then(() => console.log('I was also ran!!!')) // this will only log after 3 seconds
 	.catch(() => console.log('uh oh!!')); // this will not log out since the Promise was resolved
+
+
