@@ -42,4 +42,8 @@ fetch(url)
 	// this takes the response that we got back from the server and pulls some readable json data
 	.then(response => response.json())
 	.then(data => console.log(data)); // we get back a list of objects, a list of posts
-// still highly recommeneded to use ajax utility libraries like axios or even jquery
+
+
+// STILL HIGHLY RECOMMEND TO USE AJAX UTILITY LIBRARIES LIKE AXIOS OR EVEN JQUERY
+// THIS IS BECAUSE IF THE REQUEST ACTUALLY HITS THE SERVER AND RETURNS A STATUS CODE AND THE STATUS CODE IS HIGHER THAN 300 (STATUS OF NOT SUCCESSFUL), IT DOES NOT TRIGGER THE catch() SCENARIO, INSTEAD IT WILL TRIGGER THE .then() SCRNARIO AND WILL STILL LOG THE RESPONSE
+// IT WILL ONLY TRIGGER THE catch() CASE IF THE NETWORK REQUEST FLAT OUT FAILS TO BE ISSUED AT ALL aka AN INCORRECT DOMAIN NAME
