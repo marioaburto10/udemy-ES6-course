@@ -32,3 +32,14 @@ promise2
 	.catch(() => console.log('uh oh!!')); // this will not log out since the Promise was resolved
 
 
+
+// To do an ajax call, just put the url inside of fetch()
+// fetch() is a function that is built in with the browser as well
+const url = "https://jsonplaceholder.typicode.com/posts/";
+
+// WARNING: WILL NOT WORK IF RAN ON NODE, MUST BE COPIED AND PASTED INTO THE GOOGLE CHROME CONSOLE
+fetch(url)
+	// this takes the response that we got back from the server and pulls some readable json data
+	.then(response => response.json())
+	.then(data => console.log(data)); // we get back a list of objects, a list of posts
+// still highly recommeneded to use ajax utility libraries like axios or even jquery
