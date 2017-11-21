@@ -136,7 +136,7 @@ function* numbers() {
 		// this is used to make the iteration possible using for of loops
 		*[Symbol.iterator]() {
 			yield this.content;
-			// for every node (child) of this.children, go into that child and see if it is iterable, if it is, iterate through it
+			// for every child (or node) of this.children, go into that child and see if it is iterable, if it is, iterate through it
 			for (let child of this.children) {
 				yield* child;
 			}
